@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* daisyUi customization */
+@plugin "daisyui/theme" {
+    name: "light";
+    default: true;
+    --color-primary-content: #0E2954;
+}
+
+/* google fonts */
+.sora {
+    font-family: "Sora", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.poppins {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
