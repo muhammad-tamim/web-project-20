@@ -73,6 +73,38 @@
     --color-primary-content: #0E2954;
 }
 ```
+3. How to add a backing images on tailwind: 
+   - Option 1: Use style prop (recommended for dynamic imports)
+
+```jsx
+import React from 'react';
+import banner from '../assets/images/Banner-min.jpg';
+
+const Banner = () => {
+  return (
+    <div
+      style={{ backgroundImage: `url(${banner})` }}
+      className="h-screen bg-cover bg-center"
+    >
+      <div className="px-4 lg:px-12 xl:px-[140px]">
+        {/* Your content */}
+      </div>
+    </div>
+  );
+};
+
+export default Banner;
+```
+
+   - Option 2: Put image in public folder and use Tailwind `bg-[url()]`
+
+```jsx
+<div className="h-screen bg-[url('/images/Banner-min.jpg')] bg-cover bg-center">
+  <div className="px-4 lg:px-12 xl:px-[140px]">
+    {/* Content */}
+  </div>
+</div>
+```
 
 ## Challenges I faced while Building This Project:
 
