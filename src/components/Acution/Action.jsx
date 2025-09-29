@@ -6,6 +6,7 @@ const Action = () => {
     const [data, setData] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [clicked, setClicked] = useState([])
 
     const tableHeadData = [
         { id: 1, name: "Items" },
@@ -21,6 +22,12 @@ const Action = () => {
             .catch(error => setError(error))
             .finally(() => setLoading(false))
     }, [])
+
+    const handleClick = (item) => {
+        console.log(item)
+        setClicked([...clicked, item.id])
+    }
+    console.log(clicked)
 
     return (
         <div className='bg-[#EBF0F5] py-[132px] px-4 lg:px-12 xl:px-[140px]'>
@@ -40,7 +47,7 @@ const Action = () => {
                                 </tr>
                             </thead>
                             <tbody >
-                                <TableRow data={data}></TableRow>
+                                <TableRow clicked={clicked} handleClick={handleClick} data={data}></TableRow>
                             </tbody>
                         </table>
                     </div>

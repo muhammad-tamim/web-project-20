@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
-const TableRow = ({ data }) => {
+const TableRow = ({ data, handleClick, clicked }) => {
     return (
         <>
             {data.map(item => (
@@ -15,8 +15,11 @@ const TableRow = ({ data }) => {
                     <td className='text-center px-8 py-6'>${item.currentBidPrice}</td>
                     <td className='text-center'>{item.timeLeft}</td>
                     <td className='px-8 py-6'>
-                        <FaRegHeart className="m-auto size-7 cursor-pointer" />
-                        <FaHeart className="m-auto size-7 hidden cursor-pointer" />
+                        {clicked.includes(item.id)
+                            ? < FaHeart className="m-auto size-7 cursor-not-allowed text-red-500" />
+                            : <FaRegHeart onClick={() => {
+                                handleClick(item)
+                            }} className="m-auto size-7 cursor-pointer" />}
                     </td>
                 </tr>
             ))}
