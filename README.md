@@ -1,12 +1,21 @@
-# Project Name:
+# Project Name: Auction Gallery
 
 ## Project Description:  
+Auction Gallery is a React-based web application built with HTML, Tailwind CSS, DaisyUI, and React.js, where users can explore and participate in active auctions. Users can view all active auctions, add an item to their favorites, and also remove items from the favorites list.
+
+The main purpose of building this project was to practice and apply my basic React learning Through:
+- Fetching JSON data using useEffect
+- Storing and managing data with useState
+- Implementing conditional rendering
+- Rendering dynamic lists using map
+- modify data using filter
+
+This project helped me strengthen my understanding of React fundamentals while building a functional and interactive web application.
 
 ## Live Site Link:
+https://web-projects-20.netlify.app/
 
 ## Project Video:
-
-## features
 
 ## What I Learned New while Building This Project:
 1. How to use multiple google fonts on react project: 
