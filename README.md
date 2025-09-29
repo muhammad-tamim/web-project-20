@@ -185,7 +185,40 @@ left: 0;
 ```
 Meaning the div stretches to cover the whole parent. Since the parent has position: relative, this child absolutely fills it. So now, your overlay spans the full size of the banner.
 
+
 ## Challenges I faced while Building This Project:
+
+1. I couldn’t horizontally and vertically center the table heart icons using flex because table cells (`<td>`) behave like inline-block elements, and flex alignment doesn’t always work accurately inside them—even when wrapping the icon in a `<div>`. After some experimentation, I used mx-auto with a fixed icon size, and it worked perfectly.
+
+```jsx
+import React from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+
+const TableRow = ({ data }) => {
+    return (
+        <>
+            {data.map(item => (
+                <tr key={item.id} className='text-primary-content'>
+                    <td >
+                        <div className='flex gap-6'>
+                            <img className="size-[96px]" src={item.image} alt="" />
+                            <p className='text-lg pt-3.5'>{item.title}</p>
+                        </div>
+                    </td>
+                    <td className='text-center'>${item.currentBidPrice}</td>
+                    <td className='text-center'>{item.timeLeft}</td>
+                    <td>
+                        <FaRegHeart className="m-auto size-7" />
+                        <FaHeart className="m-auto size-7 hidden" />
+                    </td>
+                </tr>
+            ))}
+        </>
+    );
+};
+
+export default TableRow;
+```
 
 ## Contact With Me: 
 
