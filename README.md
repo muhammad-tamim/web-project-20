@@ -105,6 +105,42 @@ export default Banner;
   </div>
 </div>
 ```
+4. How to flip a background image in tailwind: 
+
+In normal CSS, flipping something horizontally is done with:
+- A positive scale (scaleX(1)) = normal width.
+- A negative scale (scaleX(-1)) = flipped horizontally (mirror effect).
+
+```jsx
+import React from 'react';
+import banner from '../assets/images/Banner-min.jpg'
+
+const Banner = () => {
+    return (
+        <div
+            className="hero min-h-screen scale-x-[-1]"
+            style={{
+                backgroundImage:
+                    `url(${banner})`,
+            }}
+        >
+            <div className="hero-overlay"></div>
+            <div className="hero-content text-neutral-content text-center scale-x-[-1]">
+                <div className="max-w-md">
+                    <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+                    <p className="mb-5">
+                        Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
+                        quasi. In deleniti eaque aut repudiandae et a id nisi.
+                    </p>
+                    <button className="btn btn-primary">Get Started</button>
+                </div>
+            </div>
+        </div >
+    );
+};
+
+export default Banner;
+```
 
 ## Challenges I faced while Building This Project:
 
