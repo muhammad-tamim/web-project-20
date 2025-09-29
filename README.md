@@ -142,6 +142,49 @@ const Banner = () => {
 export default Banner;
 ```
 
+5. How to add a overlay in tailwind:
+
+```jsx
+import React from 'react';
+import banner from '../assets/images/Banner-min.jpg'
+
+const Banner = () => {
+    return (
+        <div
+            className="relative min-h-screen bg-cover scale-x-[-1] flex flex-col justify-center"
+            style={{
+                backgroundImage:
+                    `url(${banner})`,
+
+            }}
+        >
+            <div className="absolute inset-0 bg-black/50"></div>
+            <div className='px-4 lg:px-12 xl:px-[140px] scale-x-[-1]'>
+                <div className='max-w-[661px]'>
+                    <h1 className='font-semibold text-5xl text-white pb-5'>Bid on Unique Items from Around the World</h1>
+                    <p className='text-2xl font-light text-white pb-8'>Discover rare collectibles, luxury goods, and vintage treasures in our curated auctions</p>
+                    <div>
+                        <button className='btn rounded-[35px] btn-lg'>Explore Auction</button>
+                    </div>
+                </div>
+            </div>
+        </div >
+    );
+};
+
+export default Banner;
+```
+
+here, `inset-0` is a shorthand for: 
+
+```css
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
+```
+Meaning the div stretches to cover the whole parent. Since the parent has position: relative, this child absolutely fills it. So now, your overlay spans the full size of the banner.
+
 ## Challenges I faced while Building This Project:
 
 ## Contact With Me: 
