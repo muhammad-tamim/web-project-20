@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import TableRow from './TableRow';
 import { FaRegHeart } from 'react-icons/fa';
+import FavItems from './FavItems';
 
 const Action = () => {
     const [data, setData] = useState([])
     const [error, setError] = useState(null)
     const [loading, setLoading] = useState(true)
     const [clicked, setClicked] = useState([])
+    const [items, setItems] = useState([])
+    const [totalAmount, setTotalAmount] = useState(0)
 
     const tableHeadData = [
         { id: 1, name: "Items" },
@@ -24,10 +27,19 @@ const Action = () => {
     }, [])
 
     const handleClick = (item) => {
-        console.log(item)
         setClicked([...clicked, item.id])
+        setItems([...items, item])
+        setTotalAmount(item.currentBidPrice + totalAmount)
     }
-    console.log(clicked)
+
+    const handleRemove = (removedItem) => {
+        const filterItems = items.filter((item => item.id !== removedItem.id))
+        setItems(filterItems)
+        setTotalAmount(totalAmount - removedItem.currentBidPrice)
+
+        const filterClicked = clicked.filter(click => click != removedItem.id)
+        setClicked(filterClicked)
+    }
 
     return (
         <div className='bg-[#EBF0F5] py-[132px] px-4 lg:px-12 xl:px-[140px]'>
@@ -62,15 +74,23 @@ const Action = () => {
                         </div>
                         <hr className='text-[#DCE5F3] -mt-1' />
                     </div>
-                    <div className='py-12 text-center text-black'>
-                        <h4 className='font-medium text-xl pb-6'>No Favorites yet</h4>
-                        <p className='text-black/70 text-sm'>Click the heart icon on any item<br /> to add it to your favorites</p>
+
+                    <div>
+                        {/* fallback text */}
+                        {items.length === 0 && <div className='py-12 text-center text-black'>
+                            <h4 className='font-medium text-xl pb-6'>No Favorites yet</h4>
+                            <p className='text-black/70 text-sm'>Click the heart icon on any item<br /> to add it to your favorites</p>
+                        </div>}
+
+                        {items.map((item => <FavItems handleRemove={handleRemove} key={item.id} item={item}></FavItems>))}
+
                     </div>
+
                     <div>
                         <hr className='text-[#DCE5F3]' />
                         <div className='flex justify-between p-8'>
                             <h3 className='font-medium'>Total bids Amount</h3>
-                            <h3 className='font-medium'>$0000</h3>
+                            <h3 className='font-medium'>${totalAmount}</h3>
                         </div>
                     </div>
                 </div>
