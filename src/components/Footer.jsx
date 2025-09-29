@@ -21,10 +21,10 @@ const Footer = () => {
             <ul className='flex justify-center gap-4 pb-6'>
                 {links.map((link, index) => <li key={index}>{link}</li>)}
             </ul>
-            <ul className='flex justify-center gap-20 pb-8'>
+            <ul className='flex justify-center md:gap-20 text-xs md:text-base gap-2 pb-8'>
                 {menu.map((menuItem, index) => <li key={index}>{menuItem}</li>)}
             </ul>
-            <p>© 2025 AuctionHub. All rights reserved.</p>
+            <p className='px-2'>© 2025 AuctionHub. All rights reserved.</p>
         </div>
     );
 };
