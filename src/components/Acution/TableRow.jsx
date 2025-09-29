@@ -5,7 +5,7 @@ const TableRow = ({ data, handleClick, clicked }) => {
     return (
         <>
             {data.map(item => (
-                <tr key={item.id} className='text-primary-content'>
+                <tr key={item.id} className='text-primary-content dark:text-black'>
                     <td className='px-8 py-6'>
                         <div className='flex gap-6'>
                             <img className="size-[60px] xl:size-[96px]" src={item.image} alt="" />
