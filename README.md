@@ -302,6 +302,24 @@ const Action = () => {
 export default Action;
 ```
 
+1. How to stop both grid columns from stretching to the same height based on each other:
+after using `items-start`, now the left and right sections grow according to their own content without forcing equal height.
+
+```jsx
+<div className='grid grid-cols-12 gap-6'>
+  <div className='col-span-9 bg-white rounded-3xl'> ...left side... </div>
+  <div className='col-span-3 bg-white rounded-3xl'> ...right side... </div>
+</div>
+```
+
+Before: 
+
+![image](./src/assets/images/readme.md-images/before.png)
+
+After:
+
+![image](./src/assets/images/readme.md-images/after.png)
+
 ## Challenges I faced while Building This Project:
 
 1. I couldn’t horizontally and vertically center the table heart icons using flex because table cells (`<td>`) behave like inline-block elements, and flex alignment doesn’t always work accurately inside them—even when wrapping the icon in a `<div>`. After some experimentation, I used mx-auto with a fixed icon size, and it worked perfectly.
