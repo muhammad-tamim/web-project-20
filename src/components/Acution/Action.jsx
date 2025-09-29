@@ -51,12 +51,12 @@ const Action = () => {
         <>
             <ToastContainer autoClose={1000} />
             <div className='bg-[#EBF0F5] py-[132px] px-4 lg:px-12 xl:px-[140px]'>
-                <h3 className='text-primary-content text-3xl font-medium pb-5'>Active Auctions</h3>
-                <p className='text-xl pb-5'>Discover and bid on extraordinary items</p>
+                <h3 className='text-primary-content text-3xl font-medium pb-5 text-center md:text-left'>Active Auctions</h3>
+                <p className='text-xl pb-5 text-center md:text-left'>Discover and bid on extraordinary items</p>
 
-                <div className='grid grid-cols-12 gap-6 items-start'>
+                <div className='xl:grid xl:grid-cols-12 gap-6 items-start space-y-10 xl:space-y-0'>
                     {/* left side */}
-                    <div className='col-span-9 bg-white rounded-3xl'>
+                    <div className='xl:col-span-9 bg-white rounded-3xl'>
                         <div className="overflow-x-auto">
                             {loading && <div className='text-center'>
                                 <span className="loading size-16 loading-spinner"></span>
@@ -76,7 +76,7 @@ const Action = () => {
                     </div>
 
                     {/* right sde */}
-                    <div className='col-span-3 bg-white rounded-3xl'>
+                    <div className='xl:col-span-3 bg-white rounded-3xl'>
 
                         <div>
                             <div className='text-primary-content flex justify-center items-center gap-3 p-8'>

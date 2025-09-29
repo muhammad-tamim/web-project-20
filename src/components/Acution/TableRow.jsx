@@ -8,8 +8,8 @@ const TableRow = ({ data, handleClick, clicked }) => {
                 <tr key={item.id} className='text-primary-content'>
                     <td className='px-8 py-6'>
                         <div className='flex gap-6'>
-                            <img className="size-[96px]" src={item.image} alt="" />
-                            <p className='text-lg pt-3.5'>{item.title}</p>
+                            <img className="size-[60px] xl:size-[96px]" src={item.image} alt="" />
+                            <p className='text-xs min-w-[300px] xl:text-lg pt-3.5'>{item.title}</p>
                         </div>
                     </td>
                     <td className='text-center px-8 py-6'>${item.currentBidPrice}</td>
