@@ -53,7 +53,9 @@ const Action = () => {
             <div className='bg-[#EBF0F5] py-[132px] px-4 lg:px-12 xl:px-[140px]'>
                 <h3 className='text-primary-content text-3xl font-medium pb-5'>Active Auctions</h3>
                 <p className='text-xl pb-5'>Discover and bid on extraordinary items</p>
-                <div className='grid grid-cols-12 gap-6'>
+
+                <div className='grid grid-cols-12 gap-6 items-start'>
+                    {/* left side */}
                     <div className='col-span-9 bg-white rounded-3xl'>
                         <div className="overflow-x-auto">
                             {loading && <div className='text-center'>
@@ -73,6 +75,7 @@ const Action = () => {
                         </div>
                     </div>
 
+                    {/* right sde */}
                     <div className='col-span-3 bg-white rounded-3xl'>
 
                         <div>
