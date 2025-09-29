@@ -219,6 +219,128 @@ const TableRow = ({ data }) => {
 
 export default TableRow;
 ```
+2. I couldn’t figure out the logic to turn a normal heart into a red heart icon when I clicked on a single item. At first, I tried using useState with a boolean, but if I clicked one item, all the hearts turned red, which wasn’t what I wanted.
+
+So I took help from ChatGPT and got an awesome idea: instead of using a boolean useState, I used an array to store the IDs of clicked items. Then, in the table row, I checked if the item’s id was included in the array — if it was, I changed the heart to red.
+
+```jsx
+import React, { useEffect, useState } from 'react';
+import TableRow from './TableRow';
+import { FaRegHeart } from 'react-icons/fa';
+
+const Action = () => {
+    const [data, setData] = useState([])
+    const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [clicked, setClicked] = useState([])
+
+    const tableHeadData = [
+        { id: 1, name: "Items" },
+        { id: 2, name: "Current Bid" },
+        { id: 3, name: "Time Left" },
+        { id: 4, name: "Bid Now" }
+    ]
+
+    useEffect(() => {
+        fetch("data.json")
+            .then(res => res.json())
+            .then(data => setData(data))
+            .catch(error => setError(error))
+            .finally(() => setLoading(false))
+    }, [])
+
+    const handleClick = (item) => {
+        console.log(item)
+        setClicked([...clicked, item.id])
+    }
+    console.log(clicked)
+
+    return (
+        <div className='bg-[#EBF0F5] py-[132px] px-4 lg:px-12 xl:px-[140px]'>
+            <h3 className='text-primary-content text-3xl font-medium pb-5'>Active Auctions</h3>
+            <p className='text-xl pb-5'>Discover and bid on extraordinary items</p>
+            <div className='grid grid-cols-12 gap-6'>
+                <div className='col-span-9 bg-white rounded-3xl'>
+                    <div className="overflow-x-auto">
+                        {loading && <div className='text-center'>
+                            <span className="loading size-16 loading-spinner"></span>
+                        </div>}
+                        {error && <p className='text-center text-3xl text-red-500'>{error.message}</p>}
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    {tableHeadData.map(tableHead => <th className='p-8 text-black text-xl font-normal' key={tableHead.id}>{tableHead.name}</th>)}
+                                </tr>
+                            </thead>
+                            <tbody >
+                                <TableRow clicked={clicked} handleClick={handleClick} data={data}></TableRow>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div className='col-span-3 bg-white rounded-3xl'>
+
+                    <div>
+                        <div className='text-primary-content flex justify-center items-center gap-3 p-8'>
+                            <FaRegHeart className="size-7" />
+                            <h3 className='font-medium text-2xl'>Favorite Items</h3>
+                        </div>
+                        <hr className='text-[#DCE5F3] -mt-1' />
+                    </div>
+                    <div className='py-12 text-center text-black'>
+                        <h4 className='font-medium text-xl pb-6'>No Favorites yet</h4>
+                        <p className='text-black/70 text-sm'>Click the heart icon on any item<br /> to add it to your favorites</p>
+                    </div>
+                    <div>
+                        <hr className='text-[#DCE5F3]' />
+                        <div className='flex justify-between p-8'>
+                            <h3 className='font-medium'>Total bids Amount</h3>
+                            <h3 className='font-medium'>$0000</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div >
+    );
+};
+
+export default Action;
+```
+
+```jsx
+import React from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
+
+const TableRow = ({ data, handleClick, clicked }) => {
+    return (
+        <>
+            {data.map(item => (
+                <tr key={item.id} className='text-primary-content'>
+                    <td className='px-8 py-6'>
+                        <div className='flex gap-6'>
+                            <img className="size-[96px]" src={item.image} alt="" />
+                            <p className='text-lg pt-3.5'>{item.title}</p>
+                        </div>
+                    </td>
+                    <td className='text-center px-8 py-6'>${item.currentBidPrice}</td>
+                    <td className='text-center'>{item.timeLeft}</td>
+                    <td className='px-8 py-6'>
+                        {clicked.includes(item.id)
+                            ? < FaHeart className="m-auto size-7 cursor-not-allowed text-red-500" />
+                            : <FaRegHeart onClick={() => {
+                                handleClick(item)
+                            }} className="m-auto size-7 cursor-pointer" />}
+                    </td>
+                </tr>
+            ))}
+        </>
+    );
+};
+
+export default TableRow;
+```
 
 ## Contact With Me: 
 
