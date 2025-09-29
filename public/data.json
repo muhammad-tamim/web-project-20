@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "image": "/src/assets/images/Bid1-min.png",
+        "title": "Vintage Leica M3 Camera",
+        "currentBidPrice": 2850,
+        "timeLeft": "1h 45m",
+        "bidsCount": 14
+    },
+    {
+        "id": 2,
+        "image": "/src/assets/images/Bid2-min.png",
+        "title": "1965 Gibson SG Standard Electric Guitar",
+        "currentBidPrice": 5200,
+        "timeLeft": "3h 10m",
+        "bidsCount": 21
+    },
+    {
+        "id": 3,
+        "image": "/src/assets/images/Bid3-min.png",
+        "title": "Original Apple Macintosh 128K (1984)",
+        "currentBidPrice": 8900,
+        "timeLeft": "6h 25m",
+        "bidsCount": 34
+    },
+    {
+        "id": 4,
+        "image": "/src/assets/images/Bid4-min.png",
+        "title": "Rolex Submariner 16610",
+        "currentBidPrice": 7450,
+        "timeLeft": "2d 5h",
+        "bidsCount": 18
+    },
+    {
+        "id": 5,
+        "image": "/src/assets/images/Bid5-min.png",
+        "title": "First Edition 'The Great Gatsby' by F. Scott Fitzgerald",
+        "currentBidPrice": 15600,
+        "timeLeft": "4d 12h",
+        "bidsCount": 42
+    },
+    {
+        "id": 6,
+        "image": "/src/assets/images/Bid6-min.png",
+        "title": "Mid-Century Modern Eames Lounge Chair",
+        "currentBidPrice": 6300,
+        "timeLeft": "19h 50m",
+        "bidsCount": 27
+    },
+    {
+        "id": 7,
+        "image": "/src/assets/images/Bid7-min.png",
+        "title": "Banksy Original Screen Print",
+        "currentBidPrice": 32500,
+        "timeLeft": "5d 3h",
+        "bidsCount": 56
+    }
+]
